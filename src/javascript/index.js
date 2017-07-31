@@ -70,7 +70,7 @@ function makeGallery(data) {
 	data.forEach(function(datum) {
 		var productWrapper = document.createElement('div');
 		productWrapper.classList.add('product-wrapper');
-		
+
 		var product = document.createElement("div");
 		product.classList.add("product");
 
@@ -85,9 +85,9 @@ function makeGallery(data) {
 			var productPrice = document.createElement("figcaption");
 			productPrice.classList.add("product-price");
 			productPrice.textContent = "$" + datum.price;
-			productImg.appendChild(productPrice);	
+			productImg.appendChild(productPrice);
 		}
-		
+
 		productLink.appendChild(productImg);
 
 		var productInfo = document.createElement("div");
@@ -103,49 +103,49 @@ function makeGallery(data) {
 
 		var productTags = document.createElement("span");
 		productTags.classList.add("product-tags");
-		
+
 		if (datum.gender.length) {
-			productTags.innerHTML += 			
-				'<span class="product-gender"' + 
+			productTags.innerHTML +=
+				'<span class="product-gender"' +
 				'onclick="filterData(event, \'gender\')">' +
 				datum.gender +
 				'</span> // '
 		}
-		
+
 		if (datum.itemtype.length) {
 			productTags.innerHTML +=
 				'<span class="product-type"' +
 				'onclick="filterData(event, \'itemtype\')">' +
 				datum.itemtype +
-				'</span>' 
+				'</span>'
 		}
-		
+
 		if (datum.itemtype.length && datum.itemsubtype.length) {
 			productTags.innerHTML += ' // '
 		}
-		
+
 		if (datum.itemsubtype.length) {
 			productTags.innerHTML +=
 				'<span class="product-subtype"' +
 				'onclick="filterData(event, \'itemsubtype\')">' +
 				datum.itemsubtype +
-				'</span>';	
+				'</span>';
 		}
 
 		productInfo.appendChild(productTitle);
 		productInfo.appendChild(productDescription);
 		productInfo.appendChild(productTags);
-		
+
 		product.appendChild(productLink);
 		product.appendChild(productInfo);
 		productWrapper.appendChild(product);
 		productGallery.appendChild(productWrapper);
 	});
-	
+
 	fragment.appendChild(productGallery);
 	document.body.appendChild(fragment);
 	pg = productGallery;
-	
+
 	grid(productGallery);
 }
 
@@ -159,7 +159,7 @@ function grid(el) {
 // Filter data based on the tag they clicked
 function filterData(e, tag) {
 	var match = e.target.textContent;
-	
+
 	// First filter
 	if (!isFiltered) {
 		filteredData = globalData.filter(function(data, index) {
@@ -167,15 +167,15 @@ function filterData(e, tag) {
 		});
 		filterEl = document.createElement('div');
 		filterEl.classList.add('filters');
-		filterEl.innerHTML = 
-			'<button onclick="clearFilters()">' + 
-		 	'clear' + 
+		filterEl.innerHTML =
+			'<button onclick="clearFilters()">' +
+		 	'clear' +
 			'</button>' +
 			'Filtered Results for: ' + match;
 		filterList.push(match);
 		document.body.appendChild(filterEl);
-	} 
-	
+	}
+
 	// Multi-Filtering, yaasss
 	else {
 		if (filterList.indexOf(match) !== -1) return;
@@ -185,7 +185,7 @@ function filterData(e, tag) {
 		filterEl.innerHTML += ' and ' + match;
 		filterList.push(match);
 	}
-	
+
 	document.body.removeChild(pg);
 	makeGallery(filteredData);
 	isFiltered = true;
