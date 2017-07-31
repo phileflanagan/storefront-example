@@ -10,6 +10,12 @@
 	color: #605040;
 }
 
+.product-gallery,
+.filters {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
 .product-wrapper {
 	width: 33.3333%;
 	padding: 0.5em;
@@ -32,7 +38,7 @@
 	background-image: url('http://bpc.h-cdn.co/assets/17/17/480x480/gallery-1493392884-kate-spade-pom-pom-sandals.jpg');
 	background-size: cover;
 	background-position: center center;
-	padding-bottom: 100%; 
+	padding-bottom: 100%;
 }
 
 .product-price {
@@ -81,7 +87,7 @@
 .filters button {
 	border: none;
 	outline: none;
-	margin-right: 10px; 
+	margin-right: 10px;
 }
 
 @media screen and (max-width: 768px) {
