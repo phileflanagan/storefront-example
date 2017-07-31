@@ -16,7 +16,7 @@
   margin: 0 auto; }
 
 .product-wrapper {
-  width: 33.3333%;
+  width: 25%;
   padding: 0.5em;
   position: relative;
   margin: 0 auto; }
@@ -79,6 +79,10 @@
   border: none;
   outline: none;
   margin-right: 10px; }
+
+@media screen and (max-width: 960px) {
+  .product-wrapper {
+    width: 33.3333%; } }
 
 @media screen and (max-width: 768px) {
   .product-wrapper {
